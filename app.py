@@ -19,10 +19,12 @@ def is_amharic(text):
     return False
 
 def save_feedback(query, model_used, feedback):
+    os.makedirs("evaluation", exist_ok=True)
     with open("evaluation/feedback.csv", "a", encoding="utf-8") as f:
         f.write(f'"{datetime.datetime.now().isoformat()}","{query}","{model_used}","{feedback}"\n')
 
 def log_evaluation(query, tfidf_res, embed_res):
+    os.makedirs("evaluation", exist_ok=True)
     file_path = "evaluation/results.csv"
     if not os.path.exists(file_path):
         with open(file_path, "w", encoding="utf-8") as f:
