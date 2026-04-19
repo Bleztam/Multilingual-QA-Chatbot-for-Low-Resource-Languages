@@ -15,8 +15,13 @@ Both English and Amharic entries are provided. Data is processed locally to yiel
 ## Model Comparison
 The application features two different retrieval systems for the sake of comparison and academic study:
 1. **TF-IDF (Baseline)**: Computes word frequencies and inverse document frequencies using `sklearn.feature_extraction.text.TfidfVectorizer`. It relies on exact keyword matching.
-2. **Sentence Embeddings (Modern)**: Uses `sentence-transformers` (`all-MiniLM-L6-v2`) to capture semantic meaning. It calculates cosine similarity over the dense vectors, providing more context-aware results, especially when phrasing differs heavily from the dataset.
+2. **Sentence Embeddings (Modern)**: Uses `sentence-transformers` (`paraphrase-multilingual-MiniLM-L12-v2`) to capture semantic meaning. It calculates cosine similarity over the dense vectors, providing more context-aware results, especially when phrasing differs heavily from the dataset.
+## Key Insights
 
+- TF-IDF significantly outperformed embeddings in Amharic due to strong lexical overlap in the dataset.
+- Embedding models performed better in English when queries were paraphrased.
+- Leave-One-Out testing resulted in 0% accuracy, revealing a limitation in dataset design (no redundancy or clustering).
+- This project highlights how dataset structure and language constraints can impact model performance more than model complexity.
 ## UI Features
 - **Interactive Chat Interface**: Familiar messaging bubble format.
 - **Model Selection**: Evaluate TF-IDF, Embeddings, or compare both side by side.
